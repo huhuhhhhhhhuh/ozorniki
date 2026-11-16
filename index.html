@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Озорники</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Mono&family=Cormorant+Garamond:wght@500;600&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header><h1>Речное племя: Озорники</h1></header>
+      <nav class="subtabs pages" id="pages">
+        <button type="button" class="tab on" data-page="home">Главная</button>
+        <button type="button" class="tab" data-page="calc">
+          Подсчёт баллов
+        </button>
+      </nav>
+      <section class="shell home" id="pHome">
+        <div class="card">
+          <h2>Памятка по использованию</h2>
+          <ul>
+            <li>
+              <b>Игры недели.</b> Сначала на вкладке «Подсчёт баллов» откройте
+              блок «Игры недели» (слева, под полем «Следил») и отметьте игры,
+              которые являются недельными играми на данный момент. Выбор
+              сохраняется и после нажатия «Сбросить всё», поэтому в начале
+              каждой новой недели перепроверяйте правильность
+            </li>
+            <li>
+              <b>Отчёт.</b> Слева заполните дату, ведущего и следившего в виде
+              «Имя ID» и время игр (цифрами, например 1930 станет 19:30)
+            </li>
+            <li>
+              <b>Участники.</b> Заполните список участников, каждого с новой
+              строки в формате: «Имя ID». Повторы не учитываются
+            </li>
+            <li>
+              <b>Вкладка «Игры».</b> Добавьте игры, укажите число раундов и
+              отмечайте результаты кнопками + и −
+            </li>
+            <li>
+              <b>Вкладка «Итоги и отчёты».</b> Итоговая таблица баллов за игры,
+              отчёт под блог и отчёт ведущего.
+            </li>
+            <li>
+              <b>Сохранение.</b> Данные хранятся в браузере. «Сбросить всё»
+              удаляет участников и игры, выбранные игры недели остаются
+            </li>
+          </ul>
+          <div class="quick">
+            <div class="label">Быстрые ссылки</div>
+            <div class="qtext">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1fdIho0GLpkgcs-QUgm2k489sviIzew3Ljzsvn47zrbE/edit?gid=1612729324#gid=1612729324"
+                target="_blank"
+                rel="noopener"
+                >Игры недели</a
+              >
+              ·
+              <a
+                href="https://docs.google.com/document/d/17tBzGJqWo9tlxaBWR062DFIA6hVdNsLB-iDBUMtccuE/edit?tab=t.0"
+                target="_blank"
+                rel="noopener"
+                >Правила игр</a
+              >
+              ·
+              <a
+                href="https://vk.ru/im/convo/2000000335?entrypoint=conversations_search"
+                target="_blank"
+                rel="noopener"
+                >Беседа-отчётник</a
+              >
+              ·
+              <a
+                href="https://catwar.net/blog14909"
+                target="_blank"
+                rel="noopener"
+                >catwar.net</a
+              >
+              /
+              <a
+                href="https://catwar.su/blog14909"
+                target="_blank"
+                rel="noopener"
+                >catwar.su</a
+              >
+            </div>
+          </div>
+          <div class="auth">
+            <b>Авторство:</b> Подводный Дар [1707227] [<a
+              href="https://vk.com/mirotvorkaa"
+              target="_blank"
+              rel="noopener"
+              >VK</a
+            >]<br />
+            По всем вопросам и проблемам можно обращаться к ней.
+          </div>
+        </div>
+      </section>
+      <main class="shell" id="pCalc" hidden>
+        <section class="pane">
+          <div class="label">Отчёт</div>
+          <label class="fld"
+            ><span>Дата</span><input class="field" id="fDate" type="date"
+          /></label>
+          <label class="fld"
+            ><span>Ведущий</span
+            ><input class="field" id="fLeader" autocomplete="off"
+          /></label>
+          <div class="two">
+            <label class="fld"
+              ><span>Время с</span
+              ><input
+                class="field"
+                id="fT1"
+                type="text"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="чч:мм"
+                autocomplete="off"
+            /></label>
+            <label class="fld"
+              ><span>до</span
+              ><input
+                class="field"
+                id="fT2"
+                type="text"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="чч:мм"
+                autocomplete="off"
+            /></label>
+          </div>
+          <label class="fld"
+            ><span>Следил (если есть)</span
+            ><input class="field" id="fWatch" autocomplete="off"
+          /></label>
+          <details class="side">
+            <summary>Игры недели</summary>
+            <div class="sb"><div id="weekBox"></div></div>
+          </details>
+          <div class="label">Участники</div>
+          <textarea id="raw" spellcheck="false"></textarea>
+          <div class="bar">
+            <div class="stat" id="count"></div>
+            <div class="row">
+              <button class="btn quiet" id="clearRaw" type="button">
+                Очистить список</button
+              ><button class="btn quiet" id="resetAll" type="button">
+                Сбросить всё
+              </button>
+            </div>
+          </div>
+          <div class="errors" id="warn" hidden></div>
+        </section>
+        <section class="pane" id="work">
+          <div class="subtabs" id="subtabs"></div>
+          <div id="vGames" class="pane"></div>
+          <div id="vRes" class="pane"></div>
+        </section>
+        <details class="rules">
+          <summary>Разбалловка</summary>
+          <div class="rbody">
+            <div class="hint">Для игр недели все баллы умножаются на 1,5.</div>
+            <div id="rulesBox"></div>
+          </div>
+        </details>
+      </main>
+    </div>
+    <div
+      class="mo"
+      id="modal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mTitle"
+    >
+      <div class="md">
+        <h3 id="mTitle"></h3>
+        <p id="mText"></p>
+        <div class="acts">
+          <button class="btn" id="mNo" type="button">Отмена</button>
+          <button class="btn yes" id="mYes" type="button">Убрать</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
