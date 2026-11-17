@@ -72,7 +72,7 @@
               >
               ·
               <a
-                href="https://vk.ru/im/convo/2000000335?entrypoint=conversations_search"
+                href="https://vk.ru/im/convo/2000000336?entrypoint=conversations_search"
                 target="_blank"
                 rel="noopener"
                 >Беседа-отчётник</a
@@ -110,10 +110,14 @@
           <label class="fld"
             ><span>Дата</span><input class="field" id="fDate" type="date"
           /></label>
-          <label class="fld"
-            ><span>Ведущий</span
-            ><input class="field" id="fLeader" autocomplete="off"
-          /></label>
+<label class="fld"
+  ><span>Ведущий</span
+  ><input
+    class="field"
+    id="fLeader"
+    placeholder="Имя [ID]"
+    autocomplete="off"
+/></label>
           <div class="two">
             <label class="fld"
               ><span>Время с</span
@@ -140,14 +144,19 @@
           </div>
           <label class="fld"
             ><span>Следил (если есть)</span
-            ><input class="field" id="fWatch" autocomplete="off"
+            ><input class="field" id="fWatch" autocomplete="off" placeholder="Имя [ID]"
+
           /></label>
           <details class="side">
             <summary>Игры недели</summary>
             <div class="sb"><div id="weekBox"></div></div>
           </details>
           <div class="label">Участники</div>
-          <textarea id="raw" spellcheck="false"></textarea>
+<textarea
+  id="raw"
+  spellcheck="false"
+  placeholder="Имя [ID]&#10;Имя [ID]&#10;Имя [ID]"
+></textarea>
           <div class="bar">
             <div class="stat" id="count"></div>
             <div class="row">
